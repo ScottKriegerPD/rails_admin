@@ -19,7 +19,7 @@ module RailsAdmin
       @empty = ::I18n.t('admin.export.empty_value_for_associated_objects')
       @associations = {}
 
-      (schema.delete(:include) || {}).each do |key, values|
+      (schema.delete(:only) || {}).each do |key, values|
         association = @model_config.export.fields.find{|f| f.name == key && f.association?}
         model_config = association.associated_model_config
         abstract_model = model_config.abstract_model
